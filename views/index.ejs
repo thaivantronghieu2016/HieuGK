@@ -1,0 +1,45 @@
+<%- include("partials/header") -%>
+    <div class="d-flex justify-content-center mt-2">
+        <form class="d-flex" action="/" method="get">
+            <input type="text" name="search" id="search">
+            <input class="btn btn-primary" type="submit" value="Search">
+        </form>
+    </div>
+    <div class="table-wrapper">
+        <% if (products.length > 0) {%>
+            <table class="table table-hovered">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach((player, index) => { %>
+                        <tr>
+                            <th scope="row"><%= player.id %></th>
+                            <td><img src="/assets/img/<%= player.image %>" class="rounded-circle player-img" alt=""></td>
+                            <td ><%= player.name %></td>
+                            <td><%= player.status %></td>
+                            <td><%= player.amount %></td>
+                            <td><%= player.price %></td>                          
+                            <td>
+                                <a href="/edit/<%= player.id %>" target="" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= player.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No product found. Go <a href="/add" >here</a> to add product.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
