@@ -23,6 +23,7 @@ app.use(cookieParser());
 const {getHomePage} = require('./routes/index');
 const user = require('./routes/user');
 const product = require('./routes/product');
+
 const validate = require('./validate/user.validate');
 
 
